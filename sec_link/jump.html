@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <meta charset="utf-8"> 
+      </head>
+    <style>
+        a {
+            font-size: 50px;
+        }
+        body{
+            padding: 200px;
+        }
+        button {
+            padding: 30px;
+        }
+    </style>
+
+
+<body>
+
+    <h1>嗨 <p id="text">我是灰页面</p> </h1>
+</body>
+
+<script>
+    try {
+        let jump = new URL(location.href).searchParams.get("jump");
+        let text = new URL(location.href).searchParams.get("text");
+        document.getElementById('text').innerText = text;
+        if (jump) {
+            if (jump.startsWith("black")) {
+                redirectTo(`https://share.weiyun.com/W62qSqol?q=${Math.random()}`)
+            } else if (jump.startsWith("white")) {
+                redirectTo(`https://www.douyin.com?q=${Math.random()}`)
+            } else if (jump.startsWith("grey")) {
+                redirectTo(`${location.origin + location.pathname}?text=我是跳转后的灰页面&q=${Math.random()}`)
+            }
+        }
+        let jumpPage = new URL(location.href).searchParams.get("jumpPage");
+        if (jumpPage) {
+            redirectTo(jumpPage)
+        }
+
+        function redirectTo(url) {
+            setTimeout(() => {
+                location.href  = url;  
+            }, 1000)
+        }
+        console.log(122,jump);
+    } catch(e) {
+        console.error(1233,e);
+    }
+</script>
+</html>
