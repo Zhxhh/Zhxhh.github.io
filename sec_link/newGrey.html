@@ -31,7 +31,7 @@
             } else if (jump.startsWith("white")) {
                 redirectTo(`https://www.douyin.com?q=${Math.random()}`)
             } else if (jump.startsWith("grey")) {
-                redirectTo(`./newGrey.html?text=我是跳转后的灰页面&q=${Math.random()}`)
+                redirectTo(`${location.origin + location.pathname}?text=我是跳转后的灰页面&q=${Math.random()}`)
             }
         }
         let jumpPage = new URL(location.href).searchParams.get("jumpPage");
