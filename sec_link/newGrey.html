@@ -13,7 +13,12 @@
             padding: 30px;
         }
     </style>
-
+    <script>
+        let alertQuery = new URL(location.href).searchParams.get("alert");
+        if (alertQuery) {
+            alert("我执行了js代码, 如果是同步拦截成功我不应该出现")
+        }
+    </script>
 
 <body>
 
@@ -22,11 +27,6 @@
 
 <script>
     try {
-        let alertQuery = new URL(location.href).searchParams.get("alert");
-        if (alertQuery) {
-            alert("我执行了js代码, 如果是同步拦截成功我不应该出现")
-        }
-
         let jump = new URL(location.href).searchParams.get("jump");
         let text = new URL(location.href).searchParams.get("text");
         document.getElementById('text').innerText = text;
